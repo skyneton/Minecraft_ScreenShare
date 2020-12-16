@@ -1,0 +1,12 @@
+name: GetDesktop
+version: 1.5
+author: MPoint
+main: GetDesktop.GetDesktop
+
+api-version: 1.13
+
+commands:
+  GetDesktop:
+    description: Image Set
+    usage: '/<command>'
+    permission: 'GetDesktop.*'
