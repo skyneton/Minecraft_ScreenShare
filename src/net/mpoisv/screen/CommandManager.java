@@ -215,11 +215,6 @@ public class CommandManager implements CommandExecutor {
 	}
 	
 	private static void ItemFrameSpawn(Location loc, ItemStack item) {
-		for(Entity entity : loc.getWorld().getNearbyEntities(loc, 1.5, 0.5, 1.5)) {
-			if(entity instanceof ItemFrame) {
-				entity.remove();
-			}
-		}
 		ItemFrame itemFrame = (ItemFrame) loc.getWorld().spawnEntity(loc, EntityType.ITEM_FRAME);
 		
 		itemFrame.setItem(item);
