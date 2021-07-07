@@ -12,6 +12,7 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
@@ -115,7 +116,7 @@ public class CommandManager implements CommandExecutor {
 							break;
 						if(((Player) sender).getLocation().getX() >= maxX) {
 							for(int Z = maxZ; Z >= minZ; Z--) {
-								if((Z-maxZ)*-1+1 > width)
+								if(Math.abs(Z-maxZ) >= width)
 									break;
 								Location loc = new Location(((Player) sender).getWorld(), maxX, Y, Z);
 								
@@ -134,7 +135,7 @@ public class CommandManager implements CommandExecutor {
 							}
 						}else {
 							for(int Z = minZ; Z <= maxZ; Z++) {
-								if(Z-minZ+1 > height)
+								if(Math.abs(Z-minZ) >= width)
 									break;
 								Location loc = new Location(((Player) sender).getWorld(), maxX, Y, Z);
 								
@@ -162,7 +163,7 @@ public class CommandManager implements CommandExecutor {
 							break;
 						if(((Player) sender).getLocation().getZ() >= maxZ) {
 							for(int X = minX; X <= maxX; X++) {
-								if(X-minX+1 > width)
+								if(Math.abs(X-minX) >= width)
 									break;
 								Location loc = new Location(((Player) sender).getWorld(), X, Y, maxZ);
 
@@ -182,7 +183,7 @@ public class CommandManager implements CommandExecutor {
 							}
 						}else {
 							for(int X = maxX; X >= minX; X--) {
-								if((X-maxX)*-1+1 > height)
+								if(Math.abs(X-maxX) >= width)
 									break;
 								Location loc = new Location(((Player) sender).getWorld(), X, Y, maxZ);
 
@@ -218,6 +219,11 @@ public class CommandManager implements CommandExecutor {
 	}
 	
 	private static void ItemFrameSpawn(Location loc, ItemStack item) {
+		for(Entity entity : loc.getWorld().getNearbyEntities(loc, 0.1, 0.1, 0.1)) {
+			if(entity instanceof ItemFrame) {
+				entity.remove();
+			}
+		}
 		ItemFrame itemFrame = (ItemFrame) loc.getWorld().spawnEntity(loc, EntityType.ITEM_FRAME);
 		
 		itemFrame.setItem(item);
