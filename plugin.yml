@@ -1,7 +1,7 @@
 name: Minecraft_ScreenShare
-version: 1.5
+version: 1.6.5
 author: MPoint
-main: net.mpoisv.ScreenShare
+main: net.mpoisv.screen.ScreenShare
 
 api-version: 1.13
 
