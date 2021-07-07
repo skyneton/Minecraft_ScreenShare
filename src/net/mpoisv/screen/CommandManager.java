@@ -127,7 +127,6 @@ public class CommandManager implements CommandExecutor {
 								
 								MapMeta meta = (MapMeta) item.getItemMeta();
 								meta.setMapId(((Y-maxY)*-1) * width + (Z-maxZ)*-1);
-								System.out.println("1: "+((Y-maxY)*-1) +", "+ width + ", "+ (Z-maxZ)*-1);
 								
 								item.setItemMeta(meta);
 								
@@ -146,7 +145,6 @@ public class CommandManager implements CommandExecutor {
 								
 								MapMeta meta = (MapMeta) item.getItemMeta();
 								meta.setMapId(((Y-maxY)*-1) * width + (Z-minZ));
-								System.out.println("2: "+((Y-maxY)*-1) +", "+ width + ", "+ (Z-minZ));
 								
 								item.setItemMeta(meta);
 								
@@ -175,7 +173,6 @@ public class CommandManager implements CommandExecutor {
 								
 								MapMeta meta = (MapMeta) item.getItemMeta();
 								meta.setMapId(((Y-maxY)*-1) * width + (X-minX));
-								System.out.println("3: " + ((Y-maxY)*-1) +", "+ width +", "+ (X-minX));
 								
 								item.setItemMeta(meta);
 								
@@ -194,7 +191,6 @@ public class CommandManager implements CommandExecutor {
 								
 								MapMeta meta = (MapMeta) item.getItemMeta();
 								meta.setMapId(((Y-maxY)*-1) * width + (X-maxX) * -1);
-								System.out.println("4: "+((Y-maxY)*-1) + ", "+ width +", "+ (X-maxX) * -1);
 								
 								item.setItemMeta(meta);
 								
@@ -219,7 +215,7 @@ public class CommandManager implements CommandExecutor {
 	}
 	
 	private static void ItemFrameSpawn(Location loc, ItemStack item) {
-		for(Entity entity : loc.getWorld().getNearbyEntities(loc, 0.1, 0.1, 0.1)) {
+		for(Entity entity : loc.getWorld().getNearbyEntities(loc, 1.5, 0.5, 1.5)) {
 			if(entity instanceof ItemFrame) {
 				entity.remove();
 			}
