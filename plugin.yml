@@ -1,0 +1,12 @@
+name: Minecraft_ScreenShare
+version: 1.5
+author: MPoint
+main: net.mpoisv.ScreenShare
+
+api-version: 1.13
+
+commands:
+  GetDesktop:
+    description: Image Set
+    usage: '/<command>'
+    permission: 'screen.share.*'
